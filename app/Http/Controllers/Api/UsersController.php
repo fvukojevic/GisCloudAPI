@@ -112,8 +112,36 @@ class UsersController extends Controller
 
 
     /**
+     * @OA\Get(
+     *     path="/users/{id}/posts",
+     *     tags={"user posts"},
+     *     summary="Fetch all user posts",
+     *     description="Returns all user posts",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ID of user whose posts we want",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         )
+     *     ),
+     *   @OA\Response(
+     *     response=200,
+     *     description="Success",
+     *     @OA\JsonContent(
+     *        @OA\Property(property="post", type="object", ref="#/components/schemas/Post"),
+     *     )
+     *  ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Not found"
+     *     )
+     * )
+     *
      * @param Request $request
-     * @param $id
+     * @param int $id
      *
      * @return JsonResponse
      */
@@ -121,9 +149,7 @@ class UsersController extends Controller
     {
         $user = User::query()->find($id);
         if(!$user) {
-            return response()->json([
-                'message' => 'user not found'
-            ]);
+            return response()->json(['message' => 'Not Found!'], 404);
         }
         return response()->json($user->posts);
     }
