@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Constants\RouteConstants;
 use App\Http\Controllers\Api\UsersController;
+use App\Http\Controllers\Api\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,4 @@ Route::get('/ping', function () {
 });
 
 Route::get('/users', [UsersController::class, 'index'])->name(RouteConstants::ROUTE_GET_USERS);
+Route::get('/posts', [PostsController::class, 'index'])->name(RouteConstants::ROUTE_GET_POSTS);
