@@ -240,7 +240,7 @@
                         }
                     },
                     "404": {
-                        "description": "User not found"
+                        "description": "Not found"
                     }
                 }
             }
