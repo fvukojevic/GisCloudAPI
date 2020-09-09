@@ -2,8 +2,8 @@ export PROJECT_IP = 127.0.0.1
 
 DOCKER = docker
 DOCKER_COMPOSE = docker-compose
-PHP = docker exec backend_php_1
-PHP_CLI = docker exec -it backend_php_1 /bin/bash
+PHP = docker exec gis_cloud_api_php_1
+PHP_CLI = docker exec -it gis_cloud_api_php_1 /bin/bash
 DOCKER_IMAGES_LIST := $(docker images -qa -f dangling=true)
 
 

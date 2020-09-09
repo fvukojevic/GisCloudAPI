@@ -2,13 +2,12 @@ version: '3'
 
 services:
   db:
-    image: postgres:12.0-alpine
+    image: mysql:5.7
     environment:
-      - POSTGRES_DB=development
-      - POSTGRES_USER=developer
-      - POSTGRES_PASSWORD=developer
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_DATABASE: 'development'
+      MYSQL_USER: 'developer'
+      MYSQL_PASSWORD: 'developer'
     ports:
       - "3306:3306"
 
