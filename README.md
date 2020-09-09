@@ -50,3 +50,18 @@ php artisan migrate (runs all migrations)
 php artisan db:seed (seeds data)
 php artisan serve (runs local env)
 ```
+
+## Swagger Screenshots
+
+### Api docs
+
+![alt text](https://github.com/fvukojevic/GisCloudAPI/demo_imgs/swagger-dashboard.png)
+
+### Users Example
+
+![alt text](https://github.com/fvukojevic/GisCloudAPI/demo_imgs/users.png)
+
+### Users Response Example
+
+![alt text](https://github.com/fvukojevic/GisCloudAPI/demo_imgs/users_fetched.png)
+
