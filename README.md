@@ -55,13 +55,13 @@ php artisan serve (runs local env)
 
 ### Api docs
 
-![alt text](https://github.com/fvukojevic/GisCloudAPI/demo_imgs/swagger-dashboard.png)
+![alt text](https://github.com/fvukojevic/GisCloudAPI/blob/master/demo_imgs/swagger-dashboard.png)
 
 ### Users Example
 
-![alt text](https://github.com/fvukojevic/GisCloudAPI/demo_imgs/users.png)
+![alt text](https://github.com/fvukojevic/GisCloudAPI/blob/master/demo_imgs/users.png)
 
 ### Users Response Example
 
-![alt text](https://github.com/fvukojevic/GisCloudAPI/demo_imgs/users_fetched.png)
+![alt text](https://github.com/fvukojevic/GisCloudAPI/blob/master/demo_imgs/users_fetched.png)
 
