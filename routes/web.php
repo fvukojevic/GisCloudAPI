@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Constants\RouteConstants;
+use App\Http\Controllers\Api\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/ping', function () {
     return 'pong';
 });
+
+Route::get('/users', [UsersController::class, 'index'])->name(RouteConstants::ROUTE_GET_USERS);
