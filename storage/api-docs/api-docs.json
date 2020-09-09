@@ -5,13 +5,112 @@
         "version": "0.1"
     },
     "paths": {
+        "/posts": {
+            "get": {
+                "tags": [
+                    "post"
+                ],
+                "summary": "Fetch all posts",
+                "description": "Returns all posts",
+                "operationId": "App\\Http\\Controllers\\Api\\PostsController::index",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "limiting number of returned posts",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "sort by any of user fields (title, body)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "sort order (asc, desc)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "posts": {
+                                            "$ref": "#/components/schemas/Post"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/posts/{id}": {
+            "get": {
+                "tags": [
+                    "post"
+                ],
+                "summary": "Find post by ID",
+                "description": "Returns a single post",
+                "operationId": "App\\Http\\Controllers\\Api\\PostsController::detail",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of post to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "post": {
+                                            "$ref": "#/components/schemas/Post"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Post not found"
+                    }
+                }
+            }
+        },
         "/users": {
             "get": {
                 "tags": [
                     "user"
                 ],
                 "summary": "Fetch all users",
-                "description": "Returns a single user",
+                "description": "Returns all users",
                 "operationId": "App\\Http\\Controllers\\Api\\UsersController::index",
                 "parameters": [
                     {
@@ -107,6 +206,35 @@
     },
     "components": {
         "schemas": {
+            "Post": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": "true",
+                        "example": "1"
+                    },
+                    "user_id": {
+                        "description": "owner of post",
+                        "type": "integer",
+                        "readOnly": "true",
+                        "example": "2"
+                    },
+                    "title": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "example": "Post Title Example"
+                    },
+                    "body": {
+                        "type": "string",
+                        "maxLength": 256,
+                        "example": "Post Body Example"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Post"
+                }
+            },
             "User": {
                 "properties": {
                     "id": {

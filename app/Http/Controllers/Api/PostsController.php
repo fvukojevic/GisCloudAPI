@@ -16,7 +16,47 @@ use Illuminate\Http\Request;
 class PostsController extends Controller
 {
     /**
-     * Fetch all stored users
+     * @OA\Get(
+     *     path="/posts",
+     *     tags={"post"},
+     *     summary="Fetch all posts",
+     *     description="Returns all posts",
+     *     @OA\Parameter(
+     *         name="limit",
+     *         in="query",
+     *         description="limiting number of returned posts",
+     *         required=false,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         )
+     *     ),
+     *     @OA\Parameter(
+     *         name="sort",
+     *         in="query",
+     *         description="sort by any of user fields (title, body)",
+     *         required=false,
+     *         @OA\Schema(
+     *             type="string",
+     *         )
+     *     ),
+     *     @OA\Parameter(
+     *         name="order",
+     *         in="query",
+     *         description="sort order (asc, desc)",
+     *         required=false,
+     *         @OA\Schema(
+     *             type="string",
+     *         )
+     *     ),
+     *   @OA\Response(
+     *     response=200,
+     *     description="Success",
+     *     @OA\JsonContent(
+     *        @OA\Property(property="posts", type="object", ref="#/components/schemas/Post"),
+     *     )
+     *  )
+     * )
      *
      * @return JsonResponse
      */
@@ -29,13 +69,44 @@ class PostsController extends Controller
     }
 
     /**
-     * Fetch specific post by id
+     * @OA\Get(
+     *     path="/posts/{id}",
+     *     tags={"post"},
+     *     summary="Find post by ID",
+     *     description="Returns a single post",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ID of post to return",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         )
+     *     ),
+     *   @OA\Response(
+     *     response=200,
+     *     description="Success",
+     *     @OA\JsonContent(
+     *        @OA\Property(property="post", type="object", ref="#/components/schemas/Post"),
+     *     )
+     *  ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Post not found"
+     *     )
+     * )
+     *
+     * @param int $id
      *
      * @return JsonResponse
      */
     public function detail(Request $request, $id)
     {
-        $user = Post::query()->find($id);
-        return response()->json($user);
+        $post = Post::query()->find($id);
+        if(!$post) {
+            return response()->json(['message' => 'Not Found!'], 404);
+        }
+        return response()->json($post);
     }
 }

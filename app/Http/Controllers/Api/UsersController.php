@@ -20,7 +20,7 @@ class UsersController extends Controller
      *     path="/users",
      *     tags={"user"},
      *     summary="Fetch all users",
-     *     description="Returns a single user",
+     *     description="Returns all users",
      *     @OA\Parameter(
      *         name="limit",
      *         in="query",
