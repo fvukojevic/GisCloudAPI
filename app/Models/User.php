@@ -6,6 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ *
+ * @OA\Schema(
+ * @OA\Xml(name="User"),
+ * @OA\Property(property="id", type="integer", readOnly="true", example="1"),
+ * @OA\Property(property="email", type="string", readOnly="true", format="email", description="User unique email address", example="user@gmail.com"),
+ * @OA\Property(property="name", type="string", maxLength=32, example="John Doe"),
+ * @OA\Property(property="username", type="string", maxLength=32, example="johndoe"),
+ * )
+ *
+ * Class User
+ *
+ */
 class User extends Model
 {
     use HasFactory, Notifiable;
