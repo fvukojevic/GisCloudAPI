@@ -29,8 +29,9 @@ From that folder you can manage and use local development environment.
 
 # Step 4:
 - After all containers are up (no additional docker output is thrown in console), open another terminal session.   
-    Go to project folder and issue command ```make migrations``` which will execute   
-    post-install db migrations and initial seed, etc.  
+    Go to project folder and issue command ```make setup``` which will execute   
+    post-install steps like updating hosts file, executing migrations, etc.
+    Notice that you might be asked for your root password in order to insert host entries to /etc/hosts.
 
 - Execute command ```make stop``` when you want to stop your development environment. 
 - In case you need clean environment, execute ```make clean``` which will remove all containers and allow you to run the new clean development environment with ```make start```. 
@@ -38,6 +39,9 @@ From that folder you can manage and use local development environment.
 
 # Step 5:
 - Open http://backend/api/documentation where you can test api provided by swagger
+
+# Step 6:
+- If you want to rebuild db for whatever reason use the ```make migrations``` command. It will clean everything and run initial seeders
 
 # Useful Laravel commands (not necessary if everything above went well):
 ```
