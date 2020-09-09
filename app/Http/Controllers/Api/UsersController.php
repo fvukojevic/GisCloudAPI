@@ -27,4 +27,31 @@ class UsersController extends Controller
 
         return response()->json($usersQuery->get());
     }
+
+    /**
+     * Fetch specific user by id
+     *
+     * @return JsonResponse
+     */
+    public function detail(Request $request, $id)
+    {
+        $user = User::query()->find($id);
+        return response()->json($user);
+    }
+
+
+    /**
+     * @param Request $request
+     * @param $id
+     *
+     * @return JsonResponse
+     */
+    public function userPosts(Request $request, $id)
+    {
+        $user = User::query()->find($id);
+        if(!$user) {
+            return response()->json(null);
+        }
+        return response()->json($user->posts);
+    }
 }

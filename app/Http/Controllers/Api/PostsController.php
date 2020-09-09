@@ -27,4 +27,15 @@ class PostsController extends Controller
 
         return response()->json($postsQuery->get());
     }
+
+    /**
+     * Fetch specific post by id
+     *
+     * @return JsonResponse
+     */
+    public function detail(Request $request, $id)
+    {
+        $user = Post::query()->find($id);
+        return response()->json($user);
+    }
 }
