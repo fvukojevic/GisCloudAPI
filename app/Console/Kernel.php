@@ -24,8 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('fetch:users')->everyMinute();
-        $schedule->command('fetch:posts')->everyMinute();
+        $schedule->command('fetch:users')->everyMinute()->sendOutputTo(STDOUT);
+        $schedule->command('fetch:posts')->everyMinute()->sendOutputTo(STDOUT);
     }
 
     /**
