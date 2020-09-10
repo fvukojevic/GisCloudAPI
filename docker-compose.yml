@@ -34,16 +34,11 @@ services:
     depends_on:
       - db
 
-  jenkins:
-    image: "jenkins/jenkins:alpine"
-    ports:
-      - "20300:8080"
-    env_file: .env
-    environment:
-      - APPLICATION_ENV=development
-      - DEVELOPMENT_MODE=true
-      - SYMFONY_ENV=dev
-
+  cron:
+    build:
+      context: docker/cron
+    volumes:
+      - ./:/var/www/html
 
 volumes:
   postgres_data:

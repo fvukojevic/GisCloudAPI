@@ -47,7 +47,7 @@ composer-install: ##setup install composer packages
 .PHONY: composer-install
 
 php-cli: ##@development php container cli
-	$(DOCKER) exec -it backend_php_1 /bin/bash
+	$(DOCKER) exec -it gis_cloud_api_php_1 /bin/bash
 .PHONY: php-cli
 
 migrate: ##@development execute phinx migrations
